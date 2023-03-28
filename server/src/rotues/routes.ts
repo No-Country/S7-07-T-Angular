@@ -1,5 +1,5 @@
 import { Router } from "express";
-import registerRouter from "./register"
+import registerRouter from "./auth"
 const route=Router()
 
 
