@@ -5,6 +5,7 @@ interface DocumentNode {
 }
 
 interface User extends DocumentNode {
+  _id:string
   username: string;
   email: string;
   password: string;
