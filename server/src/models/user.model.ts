@@ -5,7 +5,7 @@ interface DocumentNode {
 }
 
 interface User extends DocumentNode {
-  _id:string
+  _id: string;
   username: string;
   email: string;
   password: string;
@@ -38,5 +38,5 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
-const User = model<User>("User", userSchema);
+const User = model("User", userSchema);
 export default User;

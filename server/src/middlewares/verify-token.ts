@@ -1,22 +1,15 @@
-import { NextFunction, Request, Response } from "express";
+import { Request, NextFunction, Response } from "express";
 
 import jwt from "jsonwebtoken";
+import CustomRequest from "../types/types";
 
 type IPayload = {
-  _id: string;
+  id: string;
   iat: number;
   exp: number;
 };
 
-interface RequestUserId extends Request {
-  userId: string;
-}
-
-const verifyToken: any = (
-  req: RequestUserId,
-  res: Response,
-  next: NextFunction
-) => {
+const verifyToken = (req: CustomRequest, res: Response, next: NextFunction) => {
   try {
     const token = req.headers?.authorization?.split(" ")[1];
 
@@ -27,7 +20,8 @@ const verifyToken: any = (
     }
 
     const payload = jwt.verify(token, `${process.env.JWT_SECRET}`) as IPayload;
-    req.userId = payload._id;
+    console.log(payload);
+    req.userId = payload.id;
 
     next();
   } catch (error) {
