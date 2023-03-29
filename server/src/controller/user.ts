@@ -1,9 +1,25 @@
-import { Request, Response } from "express";
+import { Response } from "express";
+import User from "../models/user.model";
+import CustomRequest from "../types/types";
 
-const getUser = async (req: Request, res: Response) => {
+const getUser = async (req: CustomRequest, res: Response) => {
   try {
-    res.status(200).send({ msg: "todo bien" });
-  } catch (error) {}
+    const userId = req.userId;
+
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(400).json({
+        error: "User not found",
+      });
+    }
+
+    res.status(201).json({
+      user,
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
 };
 
 export { getUser };
