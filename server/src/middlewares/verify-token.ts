@@ -20,7 +20,7 @@ const verifyToken = (req: CustomRequest, res: Response, next: NextFunction) => {
     }
 
     const payload = jwt.verify(token, `${process.env.JWT_SECRET}`) as IPayload;
-    console.log(payload);
+
     req.userId = payload.id;
 
     next();
