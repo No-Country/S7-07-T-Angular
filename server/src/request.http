@@ -1,0 +1,21 @@
+
+POST http://localhost:3000/auth/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "yannokaiser@gmail.com",
+    "password": "12345678"
+}
+###
+POST http://localhost:3000/auth/register HTTP/1.1
+content-type: application/json
+
+{
+   "username": "juan mosquella",
+  "email": "jmosquella11@gmail.com",
+  "password": "12345678"
+}
+###
+GET  http://localhost:3000/user HTTP/1.1
+content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MjI4YzVlYmMwN2ExNzI5ZWUxNDExYiIsImlhdCI6MTY4MDIyMDI5OSwiZXhwIjoxNjgwMjM4Mjk5fQ.KW4Zg2J_AOc8qyKOrwpyxoAI6YCB-NuoeAk8n2eZJ6w
