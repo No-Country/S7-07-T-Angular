@@ -19,7 +19,22 @@ const searchFoodById = async (req: Request, res: Response) => {
 
     const { data } = await axiosInstance.get(`${id}`);
 
-    res.status(200).send(data);
+    let food = {
+      id: data.id,
+      title: data.title,
+      calories: data.nutrition.calories,
+      macronutrients: {
+        protein: data.nutrition.protein,
+        carbs: data.nutrition.carbs,
+        fat: data.nutrition.fat,
+      },
+      description: data.description,
+      image: data.image,
+      brand: data.brand,
+      percent: data.nutrition.caloricBreakdown,
+    };
+
+    res.status(200).send(food);
   } catch (error) {
     res.status(501).send(error);
   }
