@@ -1,0 +1,35 @@
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.colorBackgroundPrincipal{
+  background-color:#3A2D78;
+}
+
+.colorSecundario{
+  color:#FED215;
+}
+
+
+/* Beneficios */
+
+
+.marginbeneficios{
+  margin-top: 60px;
+}
+
+.bordercard{
+  border-radius: 10px;
+}
+
+.widthcard{
+  width:340px;
+  height: 300px;
+}
+
+.widthtext{
+  width:350px;
+  height:65px;
+}

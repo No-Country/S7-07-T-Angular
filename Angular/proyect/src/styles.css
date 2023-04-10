@@ -1,3 +1,30 @@
-*{
-    font-family: 'Inter', sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+/* clases generales */
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+   font-family: 'Inter', sans-serif;
+ }
+
+ ::-webkit-scrollbar {
+   width: 12px;
+   background-color: #F5F5F5;
+ }
+
+ ::-webkit-scrollbar-track {
+   background-color: #E0E0E0;
+   border-radius: 10px;
+ }
+
+ ::-webkit-scrollbar-thumb {
+   background-color: #3A2D78;
+   border-radius: 5px;
+   border: 0.2px solid #FFFFFF;
+ }
+
+
+ .fontText{
+   font-family: 'Inter', sans-serif;
+ }
