@@ -24,6 +24,11 @@
   border-radius: 10px;
 }
 
+
+.marginespacio{
+  margin-top: 100px;
+}
+
 .widthcard{
   width:340px;
   height: 300px;
