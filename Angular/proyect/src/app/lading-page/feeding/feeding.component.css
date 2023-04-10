@@ -1,0 +1,52 @@
+.tarjeta{
+    position: relative;
+    margin-bottom: 250px;
+}
+
+.tarjetainterior{
+    position: absolute;
+    width: 540px;
+    height: 408px;
+    background-color: white;
+    top:50%;
+    left:50%;
+    
+}
+
+.texto-tarjeta{
+    padding-top: 70px;
+
+}
+
+h3{
+    font-weight: 800;
+    font-size: 40px;
+}
+
+.posicion-boton{
+    margin-top: 120px;
+}
+
+.boton{
+    width: 296px;
+    padding: 20px;
+    background-color: #3ABEF0;
+    color: white;
+}
+
+@media (max-width: 576px) {
+    .tarjetainterior{
+        left: 0%;
+    }
+
+    .posicion-boton{
+        margin-top: 100px;
+    }
+
+    .tarjeta{
+       margin-bottom: 450px;
+    }
+
+    
+}
+
