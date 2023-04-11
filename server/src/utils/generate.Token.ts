@@ -11,6 +11,8 @@ interface user {
 
 function generateToken(user: user, exp: number) {
   if (user) {
+    console.log(user);
+    
     let token = jwt.sign(
       {
         id: user._id,
