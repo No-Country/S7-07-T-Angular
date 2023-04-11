@@ -3,7 +3,7 @@ POST http://localhost:3000/auth/login HTTP/1.1
 content-type: application/json
 
 {
-    "email": "yannokaiser@gmail.com",
+    "email": "yannokaiserfrom@gmail.com",
     "password": "12345678"
 }
 ###
@@ -11,8 +11,8 @@ POST http://localhost:3000/auth/register HTTP/1.1
 content-type: application/json
 
 {
-   "username": "juan mosquella",
-  "email": "jmosquella11@gmail.com",
+   "username": "miguel guerrero",
+  "email": "yannokaiserfrom@gmail.com",
   "password": "12345678"
 }
 ###
