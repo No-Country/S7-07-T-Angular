@@ -16,5 +16,5 @@ const route = Router();
 route.post("/register", rulesRegister, validationGeneral, register);
 route.post("/login", rulesLogin, validationGeneral, login);
 route.post("/sendrest",sendRest)
-route.post("/passwortreset",passwordReset)
+route.patch("/passwortreset",passwordReset)
 export default route;
