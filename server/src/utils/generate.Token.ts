@@ -9,7 +9,7 @@ interface user {
   state: Boolean;
 }
 
-function generateToken(user: user) {
+function generateToken(user: user, exp: number) {
   if (user) {
     let token = jwt.sign(
       {
@@ -17,7 +17,7 @@ function generateToken(user: user) {
       },
       process.env.JWT_SECRET as string, //confirmamos que es un string lo que va a recibir
       {
-        expiresIn: 18000, // 5 hours in seconds
+        expiresIn: exp, // 5 hours in seconds
       }
     );
     return token;

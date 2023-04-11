@@ -1,7 +1,7 @@
 import * as nodemailer from 'nodemailer';
 import User from "../models/user.model";
 
-const enviar = (user:User | undefined, template:string) => {
+const enviar = (user:User | undefined, template:string,token?:string) => {
     
     let templates = [
       {
@@ -9,6 +9,14 @@ const enviar = (user:User | undefined, template:string) => {
         subject: "Bienvenido a Fitbless",
         text: "Bienvenido a Fitbless",
         html: `<h1>${user?.username}</h1>`,
+      },
+      {
+        id: "password-reset",
+        subject: "Recuperacion de contraseña Fitbless",
+        text: "Recuperacion de contraseña Fitbless",
+        html: `<h1>${user?.username}</h1>
+        <h2> ${process.env.URL_FRONT}/${token}</h2>
+        `,
       }
      
     ];
