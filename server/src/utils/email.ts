@@ -6,8 +6,8 @@ const enviar = (user:User | undefined, template:string) => {
     let templates = [
       {
         id: "bienvenida",
-        subject: "Bienvenido a ClasseMote",
-        text: "Bienvenido a ClasseMote",
+        subject: "Bienvenido a Fitbless",
+        text: "Bienvenido a Fitbless",
         html: `<h1>${user?.username}</h1>`,
       }
      

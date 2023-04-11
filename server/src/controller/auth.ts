@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 import { generateToken } from "../utils/generate.Token";
 import otpGenerator from "otp-generator";
 import { transporter } from "../config/nodemailer.config";
+import { enviar } from "../utils/email";
 
 interface UserType {
   username: string;
@@ -78,6 +79,8 @@ const register = async (req: Request, res: Response) => {
         valid: false,
       });
     }
+    enviar(update,"bienvenida")
+    
     return res.send({ user: update, token: token, valid: true });
   } catch (error) {
     console.log(error);
