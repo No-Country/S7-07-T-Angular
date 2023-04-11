@@ -17,7 +17,7 @@ function generateToken(user: user, exp: number) {
       },
       process.env.JWT_SECRET as string, //confirmamos que es un string lo que va a recibir
       {
-        expiresIn: exp, // 5 hours in seconds
+        expiresIn: exp,
       }
     );
     return token;

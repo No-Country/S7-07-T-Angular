@@ -5,7 +5,7 @@ import { generateToken } from "../utils/generate.Token";
 import otpGenerator from "otp-generator";
 import { transporter } from "../config/nodemailer.config";
 import { enviar } from "../utils/email";
-
+import jwt from "jsonwebtoken";
 interface UserType {
   username: string;
   email: string;
@@ -101,14 +101,38 @@ const sendRest= async(req:Request ,res:Response)=>{
       return res.send({message:"correo de recuperacion enviado", valid:true})
 
     } catch (error) {
+      console.log("hola");
       console.log(error);
       
+      
+      
     }
+}
 
+const passwordReset=async(req:Request, res:Response)=>{
+    const {password, token}=req.body
+    
+    try {
+      let decode:any=jwt.verify(token, process.env.JWT_SECRET as string);
+      let passwordHash = await bcrypt.hash(password, 8);
+     
+   if (decode) {
+    const updateUser = await user.findOneAndUpdate(
+      { _id: decode.id },
+      {  password: passwordHash }
+    );
+    return res.send({valid:true, user:"contraseña actualizada"}) 
+      
+    }
+    } catch (error) {
+      res.send({message:"El token expiro",valid:false})
+      
+    }
 }
 
 export {
   register,
   login,
-  sendRest
+  sendRest,
+  passwordReset
 };
