@@ -11,6 +11,7 @@ import { BenefitsComponent } from './lading-page/benefits/benefits.component';
 import { HomeComponent } from './lading-page/home/home.component';
 import { RoutinesComponent } from './lading-page/routines/routines.component';
 import { ProfileComponent } from './profile/profile.component';
+import { FoodsessionComponent } from './Foods/foodsession/foodsession.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ProfileComponent } from './profile/profile.component';
     HomeComponent,
     RoutinesComponent,
     ProfileComponent,
+    FoodsessionComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, SharedModule],
   providers: [],
