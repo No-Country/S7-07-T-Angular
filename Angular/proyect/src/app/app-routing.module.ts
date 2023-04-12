@@ -1,21 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './lading-page/home/home.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
-  path:'',
-  component:HomeComponent
+    path: '',
+    component: HomeComponent,
   },
   {
-    path:'auth',
-    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule)
+    path: '/profile',
+    component: ProfileComponent,
   },
-  
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

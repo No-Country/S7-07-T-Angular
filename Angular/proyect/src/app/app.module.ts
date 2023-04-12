@@ -10,6 +10,7 @@ import { FirstImageComponent } from './lading-page/first-image/first-image.compo
 import { BenefitsComponent } from './lading-page/benefits/benefits.component';
 import { HomeComponent } from './lading-page/home/home.component';
 import { RoutinesComponent } from './lading-page/routines/routines.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -19,14 +20,11 @@ import { RoutinesComponent } from './lading-page/routines/routines.component';
     FirstImageComponent,
     BenefitsComponent,
     HomeComponent,
-    RoutinesComponent
+    RoutinesComponent,
+    ProfileComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    SharedModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, SharedModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
