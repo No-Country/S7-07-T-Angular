@@ -9,7 +9,11 @@
   text-decoration: none;
   border: none;
   outline: none;
+<<<<<<< HEAD
   list-style: none;
+=======
+  list-style-image: none;
+>>>>>>> 724ccfd8e93edb9be5ee78e82a0cd26a3ef90b0b
 }
 
 :root {
