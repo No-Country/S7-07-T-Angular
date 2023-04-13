@@ -8,3 +8,8 @@ a{
     color: white;
     font-weight: 700;
 }
+
+a.active-link{
+  color: rgba(0, 213, 255, 0.835);
+  font-weight: 700;
+}
