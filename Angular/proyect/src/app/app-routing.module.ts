@@ -6,13 +6,6 @@ import  HomeComponent  from './home/home.component';
 const routes: Routes = [
   {
     path: '',
-<<<<<<< HEAD
-    component: HomeComponent,
-  },
-  {
-    path: 'profile',
-    component: ProfileComponent,
-=======
     children:[
       {
         path:'',
@@ -29,7 +22,7 @@ const routes: Routes = [
         loadComponent: ()=> import('./components/footer/footer.component'),
       }
     ]
->>>>>>> 3de0c27bea4db1ba4416253382de1d262ef77805
+
   },
   // {
   //   path: '/profile',
