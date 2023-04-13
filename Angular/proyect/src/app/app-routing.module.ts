@@ -1,17 +1,32 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './lading-page/home/home.component';
-import { ProfileComponent } from './profile/profile.component';
+import  HomeComponent  from './home/home.component';
+// import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    children:[
+      {
+        path:'',
+        pathMatch:'full',
+        redirectTo:'home'
+      },
+      {
+        path:'home',
+        loadComponent: ()=> import('./home/home.component'),
+      },
+      // ejemplo de usar router
+      {
+        path:'inicio',
+        loadComponent: ()=> import('./components/footer/footer.component'),
+      }
+    ]
   },
-  {
-    path: '/profile',
-    component: ProfileComponent,
-  },
+  // {
+  //   path: '/profile',
+  //   component: ProfileComponent,
+  // },
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
