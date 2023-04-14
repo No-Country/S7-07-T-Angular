@@ -73,6 +73,8 @@ const register = async (req: Request, res: Response) => {
       .findOne({ email: User.email })
       .select("-password");
     let token = generateToken(update, 18000);
+    
+    
     if (!token) {
       return res.send({
         message: "no se pudo validar al usuario",
