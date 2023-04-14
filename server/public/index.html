@@ -30,7 +30,7 @@
            //google token
             //console.log("Id-token: " + response.credential)
             const body={id_token:response.credential}
-            let envToken=await fetch("http://localhost:3000/auth/sing-in",{
+            let envToken=await fetch("https://fitbless.onrender.com/auth/sing-in",{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json"
