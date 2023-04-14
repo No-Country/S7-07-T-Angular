@@ -1,10 +1,11 @@
-import { Request, Response } from "express";
+import { Request, Response, request } from "express";
 import user from "../models/user.model";
 import bcrypt from "bcrypt";
 import { generateToken } from "../utils/generate.Token";
 import otpGenerator from "otp-generator";
 import { transporter } from "../config/nodemailer.config";
-
+import { enviar } from "../utils/email";
+import jwt from "jsonwebtoken";
 interface UserType {
   username: string;
   email: string;
@@ -32,7 +33,7 @@ const login = async (req: Request, res: Response) => {
     const update: any = await user
       .findOne({ email: User.email })
       .select("-password");
-    let token = generateToken(User);
+    let token = generateToken(User,18000);
     if (!token) {
       return res.send({
         message: "no se pudo validar al usuario",
@@ -71,103 +72,69 @@ const register = async (req: Request, res: Response) => {
     const update: any = await user
       .findOne({ email: User.email })
       .select("-password");
-    let token = generateToken(update);
+    let token = generateToken(update, 18000);
+    
+    
     if (!token) {
       return res.send({
         message: "no se pudo validar al usuario",
         valid: false,
       });
     }
+    enviar(update,"bienvenida")
+    
     return res.send({ user: update, token: token, valid: true });
   } catch (error) {
     console.log(error);
   }
 };
 
-// Se genera un codigo de verificacion con el que el usuario podra cambiar su contraseña
+//Envio de correo con direccion y token de acceso al email registrado
 
-const generateOTP = async (req: Request, res: Response) => {
-  req.app.locals.OTP = await otpGenerator.generate(6, {
-    lowerCaseAlphabets: false,
-    upperCaseAlphabets: false,
-    specialChars: false,
-  });
+const sendRest= async(req:Request ,res:Response)=>{
+  const {email}=req.body
+    try {
+      const User= await user.findOne({email})
+      if (!User) {
+        return res.send({message:"No existe unusuario con ese correo electronico",valid:false})
+      }
+      let token= generateToken(User, 300) //expiracion en 5 minutos
+      enviar(User,"password-reset",token)
+      return res.send({message:"correo de recuperacion enviado", valid:true})
 
-  const { username } = req.query;
-
-  const User: UserType | null = await user.findOne({ username });
-
-  let code = req.app.locals.OTP;
-
-  let mail = {
-    from: process.env.GMAIL_SECRET,
-    to: User?.email,
-    subject: "Message title",
-    text: "Plaintext version of the message",
-    html: "<p>HTML version of the message</p>",
-  };
-
-  transporter
-    .sendMail(mail)
-    .then(() =>
-      res.status(201).json({
-        msg: "Email enviado exitosamente",
-        code,
-      })
-    )
-    .catch(() => res.status(400).send({ error: "Algo malo paso" }));
-};
-
-const verifyOTP = (req: Request, res: Response) => {
-  const { code }: any = req.query;
-  if (parseInt(req.app.locals.OTP) === parseInt(code)) {
-    req.app.locals.OTP = null;
-    req.app.locals.resetSession = true;
-    return res.status(200).send({ msg: "Verification succesfull" });
-  }
-  return res.status(400).send({ error: "OTP verification code invalid" });
-};
-
-const createResetSession = async (req: Request, res: Response) => {
-  if (req.app.locals.resetSession) {
-    req.app.locals.resetSession = false;
-    return res.status(200).send({ msg: "Access concibed" });
-  }
-  return res.status(440).send({ error: "Session expired" });
-};
-
-// Si la session es exitosa se redirecciona el cliente a una pagina para poder cambiar su contraseña
-
-const resetPassword = async (req: Request, res: Response) => {
-  try {
-    if (!req.app.locals.resetSession) {
-      return res.status(440).send({ error: "Session expired" });
+    } catch (error) {
+      console.log("hola");
+      console.log(error);
+      
+      
+      
     }
-    const { username, password } = req.body;
+}
 
-    const User = await user.findOne({ username });
-
-    if (!user) {
-      return res.status(404).send({ error: "No user found" });
+const passwordReset=async(req:Request, res:Response)=>{
+    const {password, token}=req.body
+    
+    try {
+      let decode:any=jwt.verify(token, process.env.JWT_SECRET as string);
+      let passwordHash = await bcrypt.hash(password, 8);
+     
+   if (decode) {
+    const updateUser = await user.findOneAndUpdate(
+      { _id: decode.id },
+      {  password: passwordHash }
+    );
+    return res.send({valid:true, user:"contraseña actualizada"}) 
+      
     }
-
-    const salt = bcrypt.genSaltSync(10);
-    const hash = bcrypt.hashSync(password, salt);
-
-    await user.findOneAndUpdate({ username }, { password: hash });
-
-    req.app.locals.resetSession = false;
-    return res.status(201).send({ msg: "Password updated succesfully" });
-  } catch (error) {
-    return res.status(401).send({ error });
-  }
-};
+    } catch (error) {
+      res.send({message:"El token expiro",valid:false})
+      
+    }
+}
 
 export {
   register,
   login,
-  generateOTP,
-  verifyOTP,
-  createResetSession,
-  resetPassword,
+  sendRest,
+  passwordReset
 };

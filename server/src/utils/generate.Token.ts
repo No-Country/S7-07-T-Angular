@@ -9,15 +9,17 @@ interface user {
   state: Boolean;
 }
 
-function generateToken(user: user) {
+function generateToken(user: user, exp: number) {
   if (user) {
+    console.log(user);
+    
     let token = jwt.sign(
       {
         id: user._id,
       },
       process.env.JWT_SECRET as string, //confirmamos que es un string lo que va a recibir
       {
-        expiresIn: 18000, // 5 hours in seconds
+        expiresIn: exp,
       }
     );
     return token;
