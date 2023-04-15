@@ -6,6 +6,7 @@ import FirstImageComponent from 'src/app/components/first-image/first-image.comp
 import  RoutinesComponent  from 'src/app/components/routines/routines.component';
 import FooterComponent from 'src/app/components/footer/footer.component';
 
+
 @Component({
   selector: 'app-home',
   standalone: true,
