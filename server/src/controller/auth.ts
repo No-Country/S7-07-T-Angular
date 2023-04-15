@@ -67,10 +67,10 @@ const register = async (req: Request, res: Response) => {
     let passwordHash = await bcrypt.hash(password, 8);
 
     const User = new user({ email, password: passwordHash, username, picture });
-    User.save();
+    let userSave:any= await User.save();
 
     const update: any = await user
-      .findOne({ email: User.email })
+      .findOne({ email: userSave.email })
       .select("-password");
     let token = generateToken(update, 18000);
     if (!token) {
