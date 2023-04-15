@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import  HomeComponent  from './home/home.component';
 // import { ProfileComponent } from './profile/profile.component';
 
@@ -10,17 +10,18 @@ const routes: Routes = [
       {
         path:'',
         pathMatch:'full',
-        redirectTo:'home'
+        redirectTo:'inicio'
       },
-      {
-        path:'home',
-        loadComponent: ()=> import('./home/home.component'),
-      },
+
       // ejemplo de usar router
       {
         path:'inicio',
-        loadComponent: ()=> import('./components/footer/footer.component'),
-      }
+        loadComponent: ()=> import('./home/home.component'),
+      },
+      {
+        path:'alimentacion',
+        loadComponent: ()=> import('./Foods/foodsession/foodsession.component')
+      },
     ]
 
   },
@@ -35,7 +36,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

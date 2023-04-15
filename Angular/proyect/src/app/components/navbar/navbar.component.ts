@@ -19,9 +19,30 @@ export default class NavbarComponent {
 
   public routes:string[]
   constructor(){
+
+
+    let _routes = [
+      {
+        path:'alimentacion',
+        sub1:[
+          {
+            path:'presentacion'
+          },
+          {
+            path:'beneficios'
+          }
+        ]
+      },
+      {
+        path:'alimentacion',
+      }
+    ]
+
     this.routes = [
+
       'inicio',
       'recetario',
+      'alimentacion',
       'aplicación',
       'historial'
     ]
