@@ -4,11 +4,12 @@ import BenefitsComponent from 'src/app/components/benefits/benefits.component';
 import FeedingComponent from 'src/app/components/feeding/feeding.component';
 import FirstImageComponent from 'src/app/components/first-image/first-image.component';
 import  RoutinesComponent  from 'src/app/components/routines/routines.component';
+import FooterComponent from 'src/app/components/footer/footer.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, BenefitsComponent, FeedingComponent, FirstImageComponent, RoutinesComponent],
+  imports: [CommonModule, BenefitsComponent, FeedingComponent, FirstImageComponent, RoutinesComponent, FooterComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
