@@ -1,0 +1,28 @@
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.colorBackgroundPrincipal{
+  background-color:#3A2D78;
+}
+
+
+/* footer */
+
+.marginfooter{
+  margin-top: 200px;
+}
+
+.colortextfooter{
+    color: #F4F5F7;
+}
+
+.colorcirculofooter{
+  background-color:#1e1e1e;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}

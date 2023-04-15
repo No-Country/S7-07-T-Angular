@@ -1,0 +1,28 @@
+.hero-container {
+  background-image: url("../../../assets/img/img-6.jpg");
+  width: 100%;
+  min-height: calc(100vh - 70px);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.heading-content {
+  padding-top: 200px;
+  color: #fff;
+  margin-left: 4rem;
+}
+
+.heading-button {
+  position: absolute;
+  bottom: 7rem;
+  text-align: center;
+  width: 100%;
+}
+.boton {
+  bottom: 10rem;
+  background-color: #3abef0;
+  width: 261px;
+  font-weight: 600;
+}
