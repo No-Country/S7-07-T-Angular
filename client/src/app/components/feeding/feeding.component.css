@@ -1,0 +1,63 @@
+.tarjeta{
+    position: relative;
+    margin-bottom: 250px;
+}
+
+.tarjetainterior{
+    position: absolute;
+    width: 500px;
+    height: 400px;
+    background-color: white;
+    top:50%;
+    left:50%;
+
+}
+
+.colorBackgroundPrincipal{
+  background-color:#3A2D78;
+  padding-top: 50px;
+}
+
+.texto-tarjeta{
+    padding-top: 40px;
+
+}
+
+h3{
+    font-weight: 800;
+    font-size: 40px;
+}
+
+.posicion-boton{
+    margin-top: 100px;
+    margin-left: 70px;
+}
+
+.boton{
+    width: 296px;
+    padding: 20px;
+    background-color: #3ABEF0;
+    color: white;
+}
+
+@media (max-width: 576px) {
+    .tarjetainterior{
+        left: 0%;
+    }
+
+    .posicion-boton{
+        margin-top: 100px;
+    }
+
+    .tarjeta{
+       margin-bottom: 450px;
+    }
+
+
+}
+
+
+.tarjetaExclusive{
+  flex-wrap:wrap;
+  /* display: flex; */
+}
