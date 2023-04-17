@@ -4,33 +4,36 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    children:[
+    children: [
       {
-        path:'',
-        pathMatch:'full',
-        redirectTo:'inicio'
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'inicio',
       },
 
       // ejemplo de usar router
       {
-        path:'inicio',
-        loadComponent: ()=> import('./layout/home/home.component'),
+        path: 'inicio',
+        loadComponent: () => import('./layout/home/home.component'),
       },
       {
-        path:'alimentacion',
-        loadComponent: ()=> import('./layout/foods/foods.component')
-      },{
-        path:'historial',
-        loadComponent: ()=> import('./layout/record/record.component')
+        path: 'alimentacion',
+        loadComponent: () => import('./layout/foods/foods.component'),
       },
-    ]
-
-  }
+      {
+        path: 'historial',
+        loadComponent: () => import('./layout/record/record.component'),
+      },
+      {
+        path: 'login',
+        loadComponent: () => import('./auth/login/login.component'),
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-
-export class AppRoutingModule { }
+export class AppRoutingModule {}
