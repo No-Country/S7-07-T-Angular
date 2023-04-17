@@ -8,17 +8,15 @@ import NavbarComponent from './components/navbar/navbar.component';
 import FooterComponent from './components/footer/footer.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
     // NgbModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
