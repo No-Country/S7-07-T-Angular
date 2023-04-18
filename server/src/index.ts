@@ -3,6 +3,7 @@ import "dotenv/config";
 import connectDb from "./config/db.config";
 import { routerGeneral } from "./routes/routes";
 import fileUpload from "express-fileupload";
+import cors from "cors";
 
 connectDb();
 
@@ -19,6 +20,8 @@ app.use(
     createParentPath: true,
   })
 );
+app.use(cors());
+
 app.use(routerGeneral);
 
 app.listen(PORT, () => {
