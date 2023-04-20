@@ -41,9 +41,7 @@ export default class NavbarComponent {
     this.routes = [
 
       'inicio',
-      'recetario',
       'alimentacion',
-      'aplicación',
       'historial'
     ]
   }

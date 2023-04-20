@@ -6,19 +6,30 @@ import { AppComponent } from './app.component';
 
 import NavbarComponent from './components/navbar/navbar.component';
 import FooterComponent from './components/footer/footer.component';
+import { RegisterComponent } from './components/register/register.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+import { LOCALE_ID } from '@angular/core';
+import { LoginComponent } from './components/login/login.component';
+
+registerLocaleData(localeEs);
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent, RegisterComponent, LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NavbarComponent,
-    FooterComponent
-    // NgbModule
+    FooterComponent,
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: LOCALE_ID, useValue: 'es-ES' }
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

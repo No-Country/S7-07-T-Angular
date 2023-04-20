@@ -1,0 +1,40 @@
+<div class="form-container">
+  <div class="first-form-box">
+    <div class="second-form-box">
+      <form
+      autocomplete="off"
+      [formGroup]="registerForm"
+      (ngSubmit)="register()"
+      >
+        <h2>Registrate</h2>
+        <div class="input-box">
+          <label for="name">Nombre</label>
+          <input type="text" formControlName="username" >
+        </div>
+
+        <div class="input-box">
+          <label for="email">Email</label>
+          <input type="email" formControlName="email" >
+        </div>
+
+        <div class="input-box">
+          <label for="contraseña">Contraseña</label>
+          <input type="password" formControlName="password" >
+        </div>
+
+        <!--<div class="input-box">
+          <label for="confirm-password">Confirmar contraseña</label>
+          <input type="password">
+        </div>-->
+
+        <button class="confirm-btn">Confirmar</button>
+
+        <div class="other-methods">
+          <span>o con</span>
+          <img src="../../../assets/img/google-icon.png" alt="">
+          <img src="../../../assets/img/facebook-icon.png" alt="">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
