@@ -35,7 +35,7 @@ export class RegisterComponent {
       password
     }
 
-    this.http.post<RegisterResponse>('https://fitbless.onrender.com/auth/register', body, options).subscribe((data) => {
+    this.http.post<RegisterResponse>('https://s7-clone-production.up.railway.app/auth/register', body, options).subscribe((data) => {
       if( data.valid === true){
         this.router.navigateByUrl('/login');
       }
