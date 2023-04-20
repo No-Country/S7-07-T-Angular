@@ -58,7 +58,7 @@ export default class PlannerComponent {
   }
 
   search(): void {
-    this.http.get<ApiResponse>(`https://fitbless.onrender.com/search/food?query=${this.searchTerm}`).subscribe(
+    this.http.get<ApiResponse>(`https://s7-clone-production.up.railway.app/search/food?query=${this.searchTerm}`).subscribe(
       (data: ApiResponse) => {
         this.dataToShowInModal = data;
         console.log('API data:', data);
