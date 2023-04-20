@@ -13,11 +13,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { LOCALE_ID } from '@angular/core';
+import { LoginComponent } from './components/login/login.component';
 
 registerLocaleData(localeEs);
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent],
+  declarations: [AppComponent, RegisterComponent, LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
